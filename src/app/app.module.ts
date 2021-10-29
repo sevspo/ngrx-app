@@ -3,6 +3,7 @@ import {
   TuiRootModule,
   TuiDialogModule,
   TuiNotificationsModule,
+  TuiButtonModule,
 } from '@taiga-ui/core';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -12,7 +13,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { metaReducers, reducers } from './reducers';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './services/jwt.interceptor';
 import { TuiTabsModule } from '@taiga-ui/kit';
 import { HomeComponent } from './home/home.component';
@@ -24,6 +25,7 @@ import { AboutComponent } from './about/about.component';
     BrowserModule,
     AppRoutingModule,
     TuiRootModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     TuiDialogModule,
     TuiTabsModule,
