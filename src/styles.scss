@@ -6,12 +6,19 @@
   box-sizing: border-box;
 }
 
+html {
+  // font-size: 62.5%;
+  font-size: 150%;
+}
+
 body {
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #5dd4e4;
-  background-color: #292640;
+  // font: var(--tui-font-text-m);
+  // font-family: "Roboto", sans-serif;
+  // font-weight: 400;
+  // font-size: 1.6rem;
+  // line-height: 1.5;
+  // color: #5dd4e4;
+  // background-color: #292640;
 }
 
 /* Remove default margin */

@@ -1,3 +1,10 @@
 <tui-root>
-  <router-outlet></router-outlet>
+  <tui-tabs class="tabs" [(activeItemIndex)]="activeItemIndex">
+    <a tuiTab routerLink="/home" routerLinkActive="active">Home</a>
+    <a tuiTab routerLink="/about" routerLinkActive="active">About</a>
+    <a tuiTab routerLink="/users" routerLinkActive="active">Users</a>
+  </tui-tabs>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
 </tui-root>
