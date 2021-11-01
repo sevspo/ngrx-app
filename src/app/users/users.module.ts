@@ -7,6 +7,7 @@ import { UserComponent } from './user/user.component';
 import { StoreModule } from '@ngrx/store';
 import * as fromUsers from './reducers';
 import { TuiButtonModule } from '@taiga-ui/core';
+import { userReducer } from './reducers';
 
 @NgModule({
   declarations: [UsersComponent, UserComponent],
@@ -14,7 +15,7 @@ import { TuiButtonModule } from '@taiga-ui/core';
     TuiButtonModule,
     CommonModule,
     UsersRoutingModule,
-    StoreModule.forFeature(fromUsers.usersFeatureKey, fromUsers.reducers),
+    StoreModule.forFeature(fromUsers.usersFeatureKey, userReducer),
   ],
 })
 export class UsersModule {}

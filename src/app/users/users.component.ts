@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../reducers';
 import { UserService } from './user.service';
-import { getUsers } from './users.actions';
+import { clearUsers, getUsers } from './users.actions';
 
 @Component({
   selector: 'app-users',
@@ -18,9 +18,13 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {}
 
   onGetUsers() {
-    this.userService.getUsers().subscribe((data) => {
-      console.log(data);
-      this.store.dispatch(getUsers());
+    this.userService.getUsers().subscribe((response) => {
+      console.log(response);
+      this.store.dispatch(getUsers({ users: response.data }));
     });
+  }
+
+  onClearUsers() {
+    this.store.dispatch(clearUsers());
   }
 }
