@@ -18,6 +18,7 @@ import { JwtInterceptor } from './services/jwt.interceptor';
 import { TuiTabsModule } from '@taiga-ui/kit';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, AboutComponent],
@@ -35,6 +36,7 @@ import { AboutComponent } from './about/about.component';
       maxAge: 25,
       logOnly: environment.production,
     }),
+    EffectsModule.forRoot([]),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
