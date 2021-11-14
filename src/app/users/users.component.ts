@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../reducers';
 import { UserService } from './user.service';
 import { clearUsers, getUsers } from './users.actions';
+import { selectAllUsers } from './users.selectors';
 
 @Component({
   selector: 'app-users',
@@ -19,10 +20,12 @@ export class UsersComponent implements OnInit {
 
   onGetUsers() {
     this.userService.getUsers().subscribe((response) => {
-      console.log(response);
+      // console.log(response);
       this.store.dispatch(getUsers({ users: response.data }));
     });
   }
+
+  users$ = this.store.select(selectAllUsers);
 
   onClearUsers() {
     this.store.dispatch(clearUsers());

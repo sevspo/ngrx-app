@@ -22,3 +22,13 @@
 >
   Clear Users
 </button>
+
+<div class="list">
+  <ul>
+    <li *ngFor="let user of users$ | async">
+      <span>{{ user.id }}</span>
+      <span> {{ user.name }}</span>
+      <span> {{ user.email }}</span>
+    </li>
+  </ul>
+</div>
