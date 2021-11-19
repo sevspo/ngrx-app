@@ -14,4 +14,8 @@ export class UserService {
   getUsers(): Observable<UserResponse> {
     return this.http.get<UserResponse>(`${environment.baseUrl}/users`);
   }
+
+  createUser(user: User): Observable<User> {
+    return this.http.post<User>(`${environment.baseUrl}/users`, user);
+  }
 }

@@ -38,13 +38,12 @@ export const userReducer = createReducer(
       ...state,
       users: [],
     };
+  }),
+
+  on(UserActions.createUser, (state, action) => {
+    return {
+      ...state,
+      users: [...state.users, action.user],
+    };
   })
 );
-
-function genericTest<T>(arg: T): { [key: string]: T } {
-  return {
-    test: arg,
-  };
-}
-
-const test = genericTest({ test: 'test' });

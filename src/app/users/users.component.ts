@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../reducers';
 import { UserService } from './user.service';
-import { clearUsers, getUsers } from './users.actions';
+import { User } from './user.types';
+import { clearUsers, createUser, getUsers } from './users.actions';
 import { selectAllUsers } from './users.selectors';
 
 @Component({
@@ -29,5 +30,16 @@ export class UsersComponent implements OnInit {
 
   onClearUsers() {
     this.store.dispatch(clearUsers());
+  }
+
+  onCreateUser() {
+    const user: User = {
+      name: 'John Doe',
+      email: 'test@test.ch',
+      gender: 'male',
+      status: 'active',
+    };
+
+    this.store.dispatch(createUser({ user }));
   }
 }

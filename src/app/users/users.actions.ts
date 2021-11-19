@@ -8,3 +8,8 @@ export const getUsers = createAction(
 
 // clear all users action
 export const clearUsers = createAction('[Users Component] Clear Users');
+
+export const createUser = createAction(
+  '[Users Component] Create User',
+  props<{ user: User }>()
+);
