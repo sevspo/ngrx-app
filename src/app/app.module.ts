@@ -32,7 +32,16 @@ import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
     TuiDialogModule,
     TuiTabsModule,
     TuiNotificationsModule,
-    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true,
+        strictActionSerializability: true,
+        strictStateSerializability: true,
+        strictActionTypeUniqueness: true,
+      },
+    }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
