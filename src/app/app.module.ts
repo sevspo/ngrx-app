@@ -20,6 +20,8 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { EffectsModule } from '@ngrx/effects';
 import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
+import { EntityDataModule } from '@ngrx/data';
+import { entityConfig } from './entity-metadata';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, AboutComponent],
@@ -51,6 +53,7 @@ import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
       stateKey: 'router',
       routerState: RouterState.Minimal,
     }),
+    EntityDataModule.forRoot(entityConfig),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'todos', loadChildren: () => import('./todos/todos.module').then(m => m.TodosModule) },
 ];
 
 @NgModule({
