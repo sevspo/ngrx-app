@@ -8,3 +8,8 @@ export const selectAllPosts = createSelector(
   selectPostsState,
   fromPost.selectAll
 );
+
+export const arePostsLoaded = createSelector(
+  selectPostsState,
+  (state) => state.hasPosts
+);

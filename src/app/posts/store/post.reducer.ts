@@ -6,19 +6,23 @@ import * as PostActions from './post.actions';
 export const postsFeatureKey = 'posts';
 
 export interface PostState extends EntityState<Post> {
-  // additional entities state properties
+  hasPosts: boolean;
 }
 
-export const adapter: EntityAdapter<Post> = createEntityAdapter<Post>();
+export const adapter: EntityAdapter<Post> = createEntityAdapter<Post>({
+  sortComparer: (a: Post, b: Post) => {
+    return a.id > b.id ? 1 : b.id > a.id ? -1 : 0;
+  },
+});
 
 export const initialState: PostState = adapter.getInitialState({
-  // additional entity state properties
+  hasPosts: false,
 });
 
 export const reducer = createReducer(
   initialState,
   on(PostActions.allPostsLoaded, (state, action) =>
-    adapter.addMany(action.posts, state)
+    adapter.setAll(action.posts, { ...state, hasPosts: true })
   ),
   on(PostActions.addPost, (state, action) =>
     adapter.addOne(action.post, state)
