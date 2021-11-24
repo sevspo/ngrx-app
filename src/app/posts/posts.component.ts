@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { AppState } from '../reducers';
-import { PostActions } from './store/post-action-types';
+import * as PostActions from './store/post.actions';
+import { Post } from './store/post.model';
+import { selectAllPosts } from './store/post.selectors';
 
 @Component({
   selector: 'app-posts',
@@ -12,6 +15,8 @@ export class PostsComponent implements OnInit {
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {}
+
+  posts$: Observable<Post[]> = this.store.select(selectAllPosts);
 
   onGetPosts() {
     this.store.dispatch(PostActions.loadAllPosts());

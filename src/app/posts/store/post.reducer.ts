@@ -5,13 +5,13 @@ import * as PostActions from './post.actions';
 
 export const postsFeatureKey = 'posts';
 
-export interface State extends EntityState<Post> {
+export interface PostState extends EntityState<Post> {
   // additional entities state properties
 }
 
 export const adapter: EntityAdapter<Post> = createEntityAdapter<Post>();
 
-export const initialState: State = adapter.getInitialState({
+export const initialState: PostState = adapter.getInitialState({
   // additional entity state properties
 });
 
