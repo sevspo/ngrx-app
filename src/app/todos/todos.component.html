@@ -1,1 +1,24 @@
 <p>todos works!</p>
+
+<button
+  tuiButton
+  type="button"
+  class="tui-space_right-3 tui-space_bottom-3"
+  (click)="onGetTodos()"
+  appearance="primary"
+  size="s"
+>
+  Get Todos
+</button>
+
+<!-- list of Todos -->
+<ul>
+  <li class="todo" *ngFor="let todo of todos$ | async">
+    <div class="tile">{{ todo.title }}</div>
+    <div class="status">{{ todo.status }}</div>
+    <div class="due-date">{{ todo.due_on | date: "dd.mm.yyyy" }}</div>
+    <button tuiButton type="button" appearance="primary" size="s">
+      Delete
+    </button>
+  </li>
+</ul>
